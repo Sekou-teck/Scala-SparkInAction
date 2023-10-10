@@ -2,7 +2,7 @@ import org.apache.spark.sql._
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.functions._
 import SparkBigData._
-import org.apache.spark.sql.execution.datasources.hbase._
+//import org.apache.spark.sql.execution.datasources.hbase._
 import org.apache.hadoop.hbase.spark._
 
 object Spark_HBase {
@@ -25,7 +25,7 @@ object Spark_HBase {
     val ss = Session_Spark(true)
 
     val df_hbase = ss.read
-      .options(Map(HBaseTableCatalog.tableCatalog -> catalog_orders))
+   //   .options(Map(HBaseTableCatalog.tableCatalog -> catalog_orders))
       .format("org.apache.spark.sql.execution.datasources.hbase")
       .load()
 
@@ -37,10 +37,10 @@ object Spark_HBase {
     ss.sql("select * from Orders where state = 'MA'").show()
 
     //écriture dans HBase
-    df_hbase.write.options(
-      Map(HBaseTableCatalog.tableCatalog -> catalog_orders, HBaseTableCatalog.newTable -> "3"))
-      .format("org.apache.spark.sql.execution.datasources.hbase")
-      .save()
+   // df_hbase.write.options(
+      //Map(HBaseTableCatalog.tableCatalog -> catalog_orders, HBaseTableCatalog.newTable -> "3"))
+      //.format("org.apache.spark.sql.execution.datasources.hbase")
+      //.save()
 
 
   }

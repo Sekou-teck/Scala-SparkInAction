@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.editions.jvc</groupId>
+    <groupId>org.editions.sfof</groupId>
     <artifactId>PBGS</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -32,7 +32,6 @@
         <microsoft.sqlserver.jdbc.driver.version>6.4.0.jre8</microsoft.sqlserver.jdbc.driver.version>
         <hbase.client.version>2.2.6</hbase.client.version>
         <hbase.spark.connector.version>1.0.0</hbase.spark.connector.version>
-        <hortonworks.hbase.version>1.1.1-2.1-s_2.11</hortonworks.hbase.version>
         <cassandra.spark.connector.version>2.4.1</cassandra.spark.connector.version>
         <elasticsearch.spark.connector.version>7.11.2</elasticsearch.spark.connector.version>
         <commoons.http.client.version>3.1</commoons.http.client.version>
@@ -46,6 +45,7 @@
             <artifactId>spark-core_2.11</artifactId>
             <version>${spark.core.version}</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql -->
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -184,13 +184,6 @@
             <version>${elasticsearch.spark.connector.version}</version>
         </dependency>
 
-        <!-- shc-core hortonwork hbase connector for Spark -->
-        <dependency>
-            <groupId>com.hortonworks</groupId>
-            <artifactId>shc-core</artifactId>
-            <version>${hortonworks.hbase.version}</version>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -209,13 +202,6 @@
     </dependencies>
 
 
-    <repositories>
-        <repository>
-            <id>hdp-repo</id>
-            <url>https://repo.hortonworks.com/content/repositories/releases/</url>
-        </repository>
-    </repositories>
-
     <build>
 
         <plugins>
@@ -229,10 +215,18 @@
                 <artifactId>maven-project-info-reports-plugin</artifactId>
                 <version>3.0.0</version>
             </plugin>
+
             <plugin>
                 <groupId>org.scala-tools</groupId>
                 <artifactId>maven-scala-plugin</artifactId>
                 <version>2.11</version>
+            </plugin>
+
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>3.3.2</version>
+                <!-- etc. -->
             </plugin>
 
             <plugin>

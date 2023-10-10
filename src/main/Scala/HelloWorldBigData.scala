@@ -31,7 +31,7 @@ object HelloWorldBigData  {
 
       trace_appli.info(s"la valeur de votre division est de ${diviseur}")
 
-      lecture_fichier("c:/programmes/mesdonnees.txt")
+      lecture_fichier("/Users/sekoubafofana/Projects/sources de données/Data for HBase.txt")
 
       val nombre  = convert_entier("10")
       trace_appli.info(s"la valeur de votre nombre converti est : $nombre")
